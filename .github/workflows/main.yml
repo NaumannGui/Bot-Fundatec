@@ -1,0 +1,35 @@
+name: Robo Fundatec
+
+on:
+  schedule:
+    - cron: '0 11,23 * * *'
+  workflow_dispatch: # Esse comando extra cria um botão no GitHub para você rodar manualmente quando quiser testar!
+
+jobs:
+  executar-robo:
+    runs-on: ubuntu-latest # O GitHub liga um computador com Linux
+
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalar o Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Instalar ferramentas (requests e bs4)
+        run: pip install requests beautifulsoup4
+
+      - name: Rodar o nosso script
+        env:
+          SENHA_APP: ${{ secrets.SENHA_APP }} # Aqui o servidor abre o "cofre" e injeta a senha!
+        run: python bot.py
+
+      - name: Salvar a memória (arquivo .txt) de volta no GitHub
+        run: |
+          git config --global user.name 'Robo Fundatec'
+          git config --global user.email 'robo@github.com'
+          git add ultimo_titulo.txt
+          git commit -m "Atualizando a memória do robô" || echo "Nenhuma novidade hoje"
+          git push
