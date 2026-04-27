@@ -15,7 +15,7 @@ publicacoes = sopa_html.find_all('a', class_='eventos')
 primeira_pub = publicacoes[0]
 
 titulo = primeira_pub.text
-link = primeira_pub['href'.split("'")[1]  # Extrai o link corretamente
+link = primeira_pub['href'].split("'")[1]  # Extrai o link corretamente
 
 nome_do_arquivo = 'ultimo_titulo.txt'
 email_remetente = 'gui.naumann@gmail.com'
