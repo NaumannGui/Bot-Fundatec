@@ -25,7 +25,7 @@ link = primeira_pub['href'].split("'")[1]  # Extrai o link corretamente
 
 nome_do_arquivo = 'ultimo_titulo.txt'
 email_remetente = 'gui.naumann@gmail.com'
-email_destinatario = 'gui.naumann@gmail.com'
+email_destinatario = 'martha01braun@gmail.com'
 
 # Criando o envelope
 mensagem = MIMEMultipart()

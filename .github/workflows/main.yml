@@ -24,6 +24,7 @@ jobs:
       - name: Rodar o nosso script
         env:
           SENHA_APP: ${{ secrets.SENHA_APP }} # Aqui o servidor abre o "cofre" e injeta a senha!
+            API_KEY: ${{ secrets.API_KEY }} # Aqui o servidor abre o "cofre" e injeta a chave do proxy!
         run: python bot.py
 
       - name: Salvar a memória (arquivo .txt) de volta no GitHub
