@@ -7,7 +7,7 @@ senha_app = os.getenv('SENHA_APP')  # Certifique-se de definir a variável de am
 chave_api = os.getenv('API_KEY')  # Certifique-se de definir a variável de ambiente 'API_KEY' com a chave do proxy
 url = "https://www.fundatec.org.br/portal/concursos/publicacoes_v2.php?concurso=986"
 
-novaURL = f"http://api.scraperapi.com?api_key={chave_api}&url={url}"
+novaURL = f"http://api.scraperapi.com?api_key={chave_api}&url={url}&render=true"
 
 cabecalhos = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
