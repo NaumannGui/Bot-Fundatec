@@ -15,6 +15,7 @@ cabecalhos = {
 
 resposta = requests.get(novaURL, headers=cabecalhos)
 print(f"Status da resposta: {resposta.status_code}")
+print(f"Conteúdo da resposta: {resposta.text[:1000]}")  # Imprime os primeiros 1000 caracteres para verificar o conteúdo
 sopa_html = BeautifulSoup(resposta.text, 'html.parser')
 
 publicacoes = sopa_html.find_all('a', class_='eventos')
