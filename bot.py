@@ -3,11 +3,17 @@ from bs4 import BeautifulSoup
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+senha_app = os.getenv('SENHA_APP')  # Certifique-se de definir a variável de ambiente 'SENHA_APP' com a senha do aplicativo do Gmail
+chave_api = os.getenv('API_KEY')  # Certifique-se de definir a variável de ambiente 'API_KEY' com a chave do proxy
 url = "https://www.fundatec.org.br/portal/concursos/publicacoes_v2.php?concurso=986"
+
+novaURL = f"http://api.scraperapi.com?api_key={chave_api}&url={url}"
+
 cabecalhos = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 }
-resposta = requests.get(url, headers=cabecalhos)
+
+resposta = requests.get(novaURL, headers=cabecalhos)
 print(f"Status da resposta: {resposta.status_code}")
 sopa_html = BeautifulSoup(resposta.text, 'html.parser')
 
@@ -20,7 +26,6 @@ link = primeira_pub['href'].split("'")[1]  # Extrai o link corretamente
 nome_do_arquivo = 'ultimo_titulo.txt'
 email_remetente = 'gui.naumann@gmail.com'
 email_destinatario = 'gui.naumann@gmail.com'
-senha_app = os.getenv('SENHA_APP')  # Certifique-se de definir a variável de ambiente 'SENHA_APP' com a senha do aplicativo do Gmail
 
 # Criando o envelope
 mensagem = MIMEMultipart()
